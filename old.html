@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<title>REACT Study</title>
+		
+		
+    </head>
+    <body id="root">
+        <span id="cnt">Total Click : 0</span>
+		<button id="btn">Click Me !! </button>
+	</body>
+
+    <script>
+        let count = 0;
+        const button = document.querySelector("#btn");
+        const total = document.querySelector("#cnt");
+        button.addEventListener("click", handleClick);
+
+        function handleClick() {
+            counter++;
+            total.innerText = `Total Click : ${counter}`;
+            console.log("I have been Clicked");
+
+        }
+
+    </script>
+</html>
