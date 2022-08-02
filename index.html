@@ -16,28 +16,57 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById("root");
-        const Title = () => (
-            <h3 onMouseEnter={() => console.log("mouse enter")}>
-                Total Click : 0
-            </h3>
-        );
+        /*
+        function App() {
+            const [counter, setCounter] = React.useState(0);
+            const onClick = () => {
+                //setCounter(counter + 1);
+                setCounter((current) => current + 1);
+            }; 
+            return (
+                <div>
+                    <h3 onMouseEnter={() => console.log("mouse enter")}>
+                        Total Clicked : {counter}
+                    </h3>
+                    <button 
+                        style={{ backgroundColor : "red"}} 
+                        onClick={onClick}>
+                        Click Me !!
+                    </button>
+                </div>
+            );
+        }
+        */
 
-        const Button = () => (
-            <button 
-                style={{ backgroundColor : "red"}} 
-                onClick={() => console.log("I have been Clicked")}>
-                Click Me !!
-            </button>
-        );
-        const Container = (
+
+        function App() {
+            const [counter, setCounter] = React.useState(0);
+            const onClick = () => {
+                //setCounter(counter + 1);
+                setCounter((current) => current + 1);
+            }; 
+            return (
+                <div>
+                    <h3 onMouseEnter={() => console.log("mouse enter")}>
+                        Total Clicked : {counter}
+                    </h3>
+                    <button 
+                        style={{ backgroundColor : "red"}} 
+                        onClick={onClick}>
+                        Click Me !!
+                    </button>
+                </div>
+            );
+        }
+       
+        const Container = () => (
             <div>
-                <Title />
-                <Button />    
+                <App />
             </div>
 
         ); 
 
-        ReactDOM.render(Container, root);
+        ReactDOM.render(<App />, root);
 
 
     </script>
