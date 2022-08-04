@@ -91,7 +91,7 @@
             return (
                 <div>
                     <div>
-                        <label HtmlFor="minutes">Minutes : </label>
+                        <label HtmlFor="minutes">Km : </label>
                         <input 
                             id="minutes" placeholder="Minutes" type="number" 
                             value={inverted ? Math.round(amount * 60) : amount} 
@@ -100,7 +100,7 @@
                             />
                     </div>
                     <div>
-                        <label HtmlFor="hours">Hours : </label>
+                        <label HtmlFor="hours">Miles : </label>
                         <input 
                             id="hours" placeholder="Hours" type="number" 
                             disabled={!inverted}
@@ -115,17 +115,50 @@
             );
         }
        
+
+        function Btn({txt, big}) {
+            return (
+                <button
+                    style={{
+                        backgroundColor : "tomato",
+                        color : "white",
+                        padding : "10px 20px",
+                        border : 0,
+                        borderRadius : 10,
+                        fontSize : big,
+                    }}
+                >
+                {txt}
+                </button>
+            );
+        } 
+
         function App() {
-            const [swi, setAmount] = React.useState(0);
+            const [index, setIndex] = React.useState("");
+       
+            const onSelect = (event) => {
+                setIndex(event.target.value);
+            }; 
+
+            return (
             <div>
                 <h1>
                     Convert
                 </h1>
-                <MinutesToHours />
-                <KmToMiles />
+                <select value={index} onChange={onSelect} >
+                    <option value="">Select Your Units</option>
+                    <option value="0">MinutesToHours</option>
+                    <option value="1">KmToMiles</option>
+                </select>
+                <hr />
+                <Btn txt="Change" big="18px" />
+                <Btn txt="Cancle" big="16px" />
 
-                <button onClick={onFlip} >{inverted ? "Turn Back" : "Invert"} </button>
+                {index === "0" ? <MinutesToHours /> : null }
+                {index === "1" ? <KmToMiles /> : null }
+                
             </div>
+            )
 
         }; 
 
