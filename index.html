@@ -38,36 +38,100 @@
         }
         */
 
-
-        function App() {
-            const [counter, setCounter] = React.useState(0);
-            const onClick = () => {
-                //setCounter(counter + 1);
-                setCounter((current) => current + 1);
+        function MinutesToHours() {
+            const [amount, setAmount] = React.useState(0);
+            const [inverted, setInverted] = React.useState(false);
+            const onChange = (event) => {
+                setAmount(event.target.value);
             }; 
+            const reset = () => {setAmount(0);};
+            const onFlip = () => {
+                reset();
+                setInverted((current) => !current);
+            };
             return (
                 <div>
-                    <h3 onMouseEnter={() => console.log("mouse enter")}>
-                        Total Clicked : {counter}
-                    </h3>
-                    <button 
-                        style={{ backgroundColor : "red"}} 
-                        onClick={onClick}>
-                        Click Me !!
-                    </button>
+                    <div>
+                        <label HtmlFor="minutes">Minutes : </label>
+                        <input 
+                            id="minutes" placeholder="Minutes" type="number" 
+                            value={inverted ? Math.round(amount * 60) : amount} 
+                            onChange={onChange} 
+                            disabled={inverted}
+                            />
+                    </div>
+                    <div>
+                        <label HtmlFor="hours">Hours : </label>
+                        <input 
+                            id="hours" placeholder="Hours" type="number" 
+                            disabled={!inverted}
+                            value={inverted ? amount : Math.round(amount / 60)} 
+                            onChange={onChange} 
+                            />
+                    </div>
+                    <button onClick={reset} >RESET</button>
+                    <button onClick={onFlip} >{inverted ? "Turn Back" : "Invert"} </button>
+
+                </div>
+            );
+        }
+
+
+        function KmToMiles() {
+            const [amount, setAmount] = React.useState(0);
+            const [inverted, setInverted] = React.useState(false);
+            const onChange = (event) => {
+                setAmount(event.target.value);
+            }; 
+            const reset = () => {setAmount(0);};
+            const onFlip = () => {
+                reset();
+                setInverted((current) => !current);
+            };
+            return (
+                <div>
+                    <div>
+                        <label HtmlFor="minutes">Minutes : </label>
+                        <input 
+                            id="minutes" placeholder="Minutes" type="number" 
+                            value={inverted ? Math.round(amount * 60) : amount} 
+                            onChange={onChange} 
+                            disabled={inverted}
+                            />
+                    </div>
+                    <div>
+                        <label HtmlFor="hours">Hours : </label>
+                        <input 
+                            id="hours" placeholder="Hours" type="number" 
+                            disabled={!inverted}
+                            value={inverted ? amount : Math.round(amount / 60)} 
+                            onChange={onChange} 
+                            />
+                    </div>
+                    <button onClick={reset} >RESET</button>
+                    <button onClick={onFlip} >{inverted ? "Turn Back" : "Invert"} </button>
+
                 </div>
             );
         }
        
-        const Container = () => (
+        function App() {
+            const [swi, setAmount] = React.useState(0);
             <div>
-                <App />
+                <h1>
+                    Convert
+                </h1>
+                <MinutesToHours />
+                <KmToMiles />
+
+                <button onClick={onFlip} >{inverted ? "Turn Back" : "Invert"} </button>
             </div>
 
-        ); 
+        }; 
 
         ReactDOM.render(<App />, root);
 
 
     </script>
 </html>
+
