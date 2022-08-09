@@ -116,11 +116,9 @@
         }
        
 
-        function Btn({txt, big, changeValue}) {
-            console.log(txt, "render");
+        function Btn({txt, big}) {
             return (
                 <button
-                    onClick={changeValue}
                     style={{
                         backgroundColor : "tomato",
                         color : "white",
@@ -135,19 +133,12 @@
             );
         } 
 
-        const MemoBtn = React.memo(Btn);
-
         function App() {
             const [index, setIndex] = React.useState("");
-            const [value, setValue] = React.useState("Save Changes");
        
             const onSelect = (event) => {
                 setIndex(event.target.value);
             }; 
-
-            const changeValue = () => {
-                setValue("Revert Changes")
-            }
 
             return (
             <div>
@@ -160,11 +151,8 @@
                     <option value="1">KmToMiles</option>
                 </select>
                 <hr />
-                <Btn txt={value} big="18px" changeValue={changeValue} />
+                <Btn txt="Change" big="18px" />
                 <Btn txt="Cancle" big="16px" />
-
-                <MemoBtn txt={value} big="18px" changeValue={changeValue} />
-                <MemoBtn txt="Cancle" big="16px" />
 
                 {index === "0" ? <MinutesToHours /> : null }
                 {index === "1" ? <KmToMiles /> : null }
