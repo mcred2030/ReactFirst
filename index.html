@@ -146,7 +146,7 @@
             }; 
 
             const changeValue = () => {
-                setValue("Revert Changes")
+                setValue("Clicked Button")
             }
 
             return (
@@ -163,8 +163,8 @@
                 <Btn txt={value} big="18px" changeValue={changeValue} />
                 <Btn txt="Cancle" big="16px" />
 
-                <MemoBtn txt={value} big="18px" changeValue={changeValue} />
-                <MemoBtn txt="Cancle" big="16px" />
+                <MemoBtn txt={value} big="22px" changeValue={changeValue} />
+                <MemoBtn txt="Cancle" big="24px" />
 
                 {index === "0" ? <MinutesToHours /> : null }
                 {index === "1" ? <KmToMiles /> : null }
